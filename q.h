@@ -19,17 +19,9 @@ void InitQueue(struct Q* head){
     q = head;
 };
 
-struct TCB_t* NewItem(){
-    struct TCB_t* q_element;
-    q_element->next = NULL;
-    q_element->prev = NULL;
-
-    return q_element;
-};
-
 void AddQueue(struct Q* q, struct TCB_t* item){
     if(q->head == NULL) {
-        q -> head = item;
+        q-> head = item;
         q-> tail = item;
     } else if(q->tail == q->head) {
         item->prev = q->head;
