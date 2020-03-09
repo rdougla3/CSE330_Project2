@@ -12,11 +12,9 @@ struct Q {
     struct TCB_t* tail;
 };
 
-void InitQueue(struct Q* head){
-    struct Q* q; 
-    q->head = NULL;
-    q->tail = NULL;
-    q = head;
+void InitQueue(struct Q* q,struct TCB_t* head){
+    q->head = head;
+    q->tail = q->head;
 };
 
 void AddQueue(struct Q* q, struct TCB_t* item){

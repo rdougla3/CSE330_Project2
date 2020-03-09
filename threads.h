@@ -5,10 +5,14 @@ struct TCB_t* Curr_Thread;
 struct TCB_t* Prev_Thread;
 
 void start_thread(void (*function) (void)){
+    
     int* stack = malloc(8192); //allocate a stack of 8192 bytes
     TCB_t* TCB = (TCB_t*)malloc(sizeof(TCB_t)); //allocate a TCB
-    init_TCB(TCB, function, stack, sizeof(stack)); //call init_TCB 
-    TCB->thread_id = ++global_thread_id; //initialize thread_id
+    init_TCB(TCB, function, stack, sizeof(stack)); //call init_TCB
+    if(global_thread_id == 1){
+        RunQ = (struct Q*) malloc(sizeof(struct Q));
+        InitQueue(RunQ, TCB);
+    }
     AddQueue(RunQ, TCB); //call addQ to add this TCB into the "RunQ"
 }
 
@@ -22,6 +26,6 @@ void run(){   // real code
 void yield(){
     Prev_Thread = RunQ->head;
     RotateQ(&RunQ);
-    Curr_Thread = RunQ->head;
+    Curr_Thread = RunQ;
     swapcontext(&(Prev_Thread->context), &(Curr_Thread->context)); //swap the context, from Prev_Thread to the thread pointed to by Curr_Thread
 }
