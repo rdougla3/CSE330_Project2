@@ -13,7 +13,7 @@ void start_thread(void (*function) (void)){
         RunQ = (struct Q*) malloc(sizeof(struct Q));
         InitQueue(RunQ, TCB);
     }
-    AddQueue(RunQ, TCB); //call addQ to add this TCB into the "RunQ"
+    else AddQueue(RunQ, TCB); //call addQ to add this TCB into the "RunQ"
 }
 
 void run(){   // real code
