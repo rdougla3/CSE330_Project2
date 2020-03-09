@@ -3,21 +3,21 @@
 #include <string.h>
 #include <stdlib.h>
 #include <unistd.h>
-#include <stdio.h>
 
 
 #define _GNU_SOURCE
 
 int numAnimals;
 void countAnimals(){
-    int numSheep;
-    int numCows;
+    int numSheep = 0;
+    int numCows = 0;
     while(1){
-        if(numSheep >= 500) yeild();
+        if(numSheep >= 500) yield();
         else numSheep = countSheep(numSheep);
-        if(numCows >= 500) yeild();
+        if(numCows >= 500) yield();
         else numCows = countCows(numCows);
         numAnimals = numSheep + numCows;
+        
     }
 }
 
@@ -31,13 +31,15 @@ int countCows(int cows){
 
 int numFruit;
 void countFruit(){
-    int numApples;
-    int numOranges;
+    int numApples = 0;
+    int numOranges = 0;
     while(1){
-        if(numApples >=500) yeild(); 
+        if(numApples >=500) yield();
         else numApples = countApples(numApples);
-        if(numOranges >= 500) yeild();
+        if(numOranges >= 500) yield();
         else numOranges = countOranges(numOranges);
+        numFruit = numApples + numOranges;
+        
     }
 }
 
