@@ -6,7 +6,10 @@
             "command": "/usr/bin/gcc",
             "args": [
                 "-g",
-                "${file}",
+                "${fileDirname}/q.h",
+                "${fileDirname}/TCB.h",
+                "${fileDirname}/threads.h",
+                "${fileDirname}/thread_test.c",
                 "-o",
                 "${fileDirname}/${fileBasenameNoExtension}"
             ],

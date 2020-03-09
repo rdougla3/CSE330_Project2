@@ -12,7 +12,9 @@ void countAnimals(){
     int numSheep;
     int numCows;
     while(1){
-        if(numSheep >= 500) yeild();
+        if(numSheep >= 500) {
+            yeild();
+        }
         else numSheep = countSheep(numSheep);
         if(numCows >= 500) yeild();
         else numCows = countCows(numCows);
@@ -33,7 +35,10 @@ void countFruit(){
     int numApples;
     int numOranges;
     while(1){
-        if(numApples >=500) yeild();
+        if(numApples >=500) 
+        {
+            yeild();
+        }
         else numApples = countApples(numApples);
         if(numOranges >= 500) yeild(); 
         else numOranges = countOranges(numOranges);
