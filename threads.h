@@ -25,7 +25,7 @@ void run(){   // real code
 
 void yield(){
     Prev_Thread = RunQ->head;
-    RotateQ(&RunQ);
-    Curr_Thread = RunQ;
+    RotateQ(RunQ);
+    Curr_Thread = RunQ->head;
     swapcontext(&(Prev_Thread->context), &(Curr_Thread->context)); //swap the context, from Prev_Thread to the thread pointed to by Curr_Thread
 }
