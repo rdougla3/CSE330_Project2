@@ -15,7 +15,7 @@ void countAnimals(){
     int numSheep = 0;
     int numCows = 0;
     while(1){
-        if(numSheep >= 500)
+        if(numSheep >= 250)
             yield();
         else numSheep = incrementCount(numSheep);
         if(numCows >= 500) 
@@ -26,12 +26,11 @@ void countAnimals(){
 
 int numFruit;
 void countFruit(){
-    int* i=0;
+    int i = 0;
     while(1){
         if(numFruit >=500)
             yield();
         else numFruit = incrementCount(numFruit);
-        *i++;
     }
 }
 
