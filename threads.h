@@ -5,9 +5,8 @@ struct TCB_t* Curr_Thread;
 struct TCB_t* Prev_Thread;
 
 void start_thread(void (*function) (void)){
-    
-    int* stack = malloc(8192); //allocate a stack of 8192 bytes
     TCB_t* TCB = (TCB_t*)malloc(sizeof(TCB_t)); //allocate a TCB
+    int* stack = malloc(8192); //allocate a stack of 8192 bytes
     init_TCB(TCB, function, stack, sizeof(stack)); //call init_TCB
     if(global_thread_id == 1){
         RunQ = (struct Q*) malloc(sizeof(struct Q));

@@ -11,6 +11,7 @@ int incrementCount(int count){
     return ++count;
 }
 
+int numAnimals;
 void countAnimals(){
     int numSheep = 0;
     int numCows = 0;
@@ -21,17 +22,23 @@ void countAnimals(){
         if(numCows >= 500) 
             yield();
         else numCows = incrementCount(numCows);
+        numAnimals = numCows + numSheep;
+        
     }
 }
 
 int numFruit;
 void countFruit(){
-    int i = 0;
+    int numOranges = 0;
+    int numApples = 0;
     while(1){
-        if(numFruit >=500)
+        if(numOranges >= 250)
             yield();
-        else numFruit = incrementCount(numFruit);
-        i++;
+        else numOranges = incrementCount(numOranges);
+        if(numApples >= 500)
+            yield();
+        else numApples = incrementCount(numApples);
+        numFruit = numOranges + numApples;
     }
 }
 
