@@ -11,34 +11,53 @@ int incrementCount(int count){
     return ++count;
 }
 
-int numAnimals;
+int maxSheep = 5;
+int maxCows = 10;
 void countAnimals(){
     int numSheep = 0;
     int numCows = 0;
     while(1){
-        if(numSheep >= 250)
+        if(numSheep >= maxSheep){
+            printf("counted max sheep. yielding...\n");
             yield();
-        else numSheep = incrementCount(numSheep);
-        if(numCows >= 500) 
+        }   
+        else{
+            numSheep = incrementCount(numSheep);
+            printf("Counting sheep #%d\n", numSheep);
+        } 
+        if(numCows >= maxCows){
+            printf("countet max cows. yielding...\n");
             yield();
-        else numCows = incrementCount(numCows);
-        numAnimals = numCows + numSheep;
-        
+        }   
+        else{
+            numCows = incrementCount(numCows);
+            printf("Counting cow #%d\n", numCows);
+        } 
     }
 }
 
-int numFruit;
+int maxOranges = 10;
+int maxApples = 5;
 void countFruit(){
     int numOranges = 0;
     int numApples = 0;
     while(1){
-        if(numOranges >= 250)
+        if(numOranges >= maxOranges){
+            printf("counted max oranges. yielding...\n");
             yield();
-        else numOranges = incrementCount(numOranges);
-        if(numApples >= 500)
+        }   
+        else{
+            numOranges = incrementCount(numOranges);
+            printf("Counting orange #%d\n", numOranges);
+        } 
+        if(numApples >= maxApples){
+            printf("counted max apples. yielding...\n");
             yield();
-        else numApples = incrementCount(numApples);
-        numFruit = numOranges + numApples;
+        }   
+        else{
+            numApples = incrementCount(numApples);
+            printf("Counting apple #%d\n", numApples);
+        } 
     }
 }
 
