@@ -31,6 +31,7 @@ void countFruit(){
         if(numFruit >=500)
             yield();
         else numFruit = incrementCount(numFruit);
+        i++;
     }
 }
 

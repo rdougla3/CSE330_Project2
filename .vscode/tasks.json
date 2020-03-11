@@ -1,4 +1,5 @@
 {
+    "version": "2.0.0",
     "tasks": [
         {
             "type": "shell",
@@ -6,17 +7,20 @@
             "command": "/usr/bin/gcc",
             "args": [
                 "-g",
-                "${fileDirname}/q.h",
-                "${fileDirname}/TCB.h",
-                "${fileDirname}/threads.h",
-                "${fileDirname}/thread_test.c",
+                "${file}",
                 "-o",
                 "${fileDirname}/${fileBasenameNoExtension}"
             ],
             "options": {
                 "cwd": "/usr/bin"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
             }
         }
-    ],
-    "version": "2.0.0"
+    ]
 }
