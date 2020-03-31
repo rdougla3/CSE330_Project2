@@ -1,4 +1,5 @@
 #include "threads.h"
+#include "sem.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -11,15 +12,19 @@ int incrementCount(int count){
     return ++count;
 }
 
-int maxSheep = 5;
-int maxCows = 10;
+struct Semaphore* semaphore;
+
+int maxSheep = 50;
+int maxCows = 100;
 void countAnimals(){
     int numSheep = 0;
     int numCows = 0;
+    
     while(1){
+        P(semaphore);
         if(numSheep >= maxSheep){
             printf("Counted max sheep. Yielding...\n");
-            yield();
+            
         }   
         else{
             numSheep = incrementCount(numSheep);
@@ -27,24 +32,27 @@ void countAnimals(){
         } 
         if(numCows >= maxCows){
             printf("Counted max cows. Yielding...\n");
-            yield();
+            
         }   
         else{
             numCows = incrementCount(numCows);
             printf("Counting cow #%d\n", numCows);
         } 
+        V(semaphore);
     }
 }
 
-int maxOranges = 10;
-int maxApples = 5;
+int maxOranges = 100;
+int maxApples = 50;
 void countFruit(){
+
     int numOranges = 0;
     int numApples = 0;
     while(1){
+        P(semaphore);
         if(numOranges >= maxOranges){
             printf("Counted max oranges. Yielding...\n");
-            yield();
+        
         }   
         else{
             numOranges = incrementCount(numOranges);
@@ -52,17 +60,18 @@ void countFruit(){
         } 
         if(numApples >= maxApples){
             printf("Counted max apples. Yielding...\n");
-            yield();
+          
         }   
         else{
             numApples = incrementCount(numApples);
             printf("Counting apple #%d\n", numApples);
-        } 
+        }
+        V(semaphore); 
     }
 }
 
 int main (){
-    
+    InitSem(semaphore, 0);
     start_thread(countAnimals);
     start_thread(countFruit);
     run();

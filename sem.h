@@ -7,11 +7,11 @@ struct Semaphore{
     struct Q* TCB_Q;
 };
 
-void InitSem(Semaphore* semaphore, int value){
+void InitSem(struct Semaphore* semaphore, int value){
     semaphore->value = value;
 }
 
-void P(Semaphore* semaphore){
+void P(struct Semaphore* semaphore){
     semaphore->value--;
     
     if(semaphore->value < 0) {
@@ -22,7 +22,7 @@ void P(Semaphore* semaphore){
     }
 }
 
-void V(Semaphore* semaphore){
+void V(struct Semaphore* semaphore){
     semaphore->value++;
 
     if(semaphore->value <= 0){
